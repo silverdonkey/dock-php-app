@@ -1,22 +1,14 @@
-version: '3'
+version: '3.8'
 services:
   app:
-    extends:
-      file: docker-compose.base.yml
-      service: app
     working_dir: /var/www/html
-  cache:
-    extends:
-      file: docker-compose.base.yml
-      service: cache
   node:
-    extends:
-      file: docker-compose.base.yml
-      service: node
-    working_dir: /var/www/html 
+    working_dir: /var/www/html
 networks:
   appnet:
     driver: bridge
 volumes:
   cachedata:
+    driver: local
+  dbdata:
     driver: local
